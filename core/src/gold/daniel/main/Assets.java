@@ -78,9 +78,6 @@ public class Assets
         manager.load("misc/texture.png", Texture.class);
         
         manager.load("enemies/boss/Boss_Merged.png", Texture.class);
-        
-        manager.load("enemies/medium/Medium_Ship_Merged.png", Texture.class);
-        
         manager.load("background/level/Stage_1_Loop.png", Texture.class);
         
         manager.load("player/Ship_Bank_00_Frame_1.png", Texture.class);
@@ -186,19 +183,6 @@ public class Assets
         manager.load("player/bullets/Bullet_Level_3.png", Texture.class);
         
         manager.load("player/bullets/Tear_Shot_Blue_Frame_1.png", Texture.class);
-        
-        manager.load("enemies/small/Small_Ship_000_Degrees.png", Texture.class);
-        manager.load("enemies/small/Small_Ship_030_Degrees.png", Texture.class);
-        manager.load("enemies/small/Small_Ship_060_Degrees.png", Texture.class);
-        manager.load("enemies/small/Small_Ship_090_Degrees.png", Texture.class);
-        manager.load("enemies/small/Small_Ship_120_Degrees.png", Texture.class);
-        manager.load("enemies/small/Small_Ship_150_Degrees.png", Texture.class);
-        manager.load("enemies/small/Small_Ship_180_Degrees.png", Texture.class);
-        manager.load("enemies/small/Small_Ship_210_Degrees.png", Texture.class);
-        manager.load("enemies/small/Small_Ship_240_Degrees.png", Texture.class);
-        manager.load("enemies/small/Small_Ship_270_Degrees.png", Texture.class);
-        manager.load("enemies/small/Small_Ship_300_Degrees.png", Texture.class);
-        manager.load("enemies/small/Small_Ship_330_Degrees.png", Texture.class);
         
         manager.load("background/level/Stage_1_Page_1.png", Texture.class);
         manager.load("background/level/Stage_1_Page_2.png", Texture.class);
