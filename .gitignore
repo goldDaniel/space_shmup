@@ -1,0 +1,31 @@
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*war/
+*assets/
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+build/*
+build/
+core/assets/*
+desktop/build/*
+html/build/*
+html/build/cache/*
+.nb-gradle/*
+
+\.gradle/2\.14\.1/taskArtifacts/cache\.properties\.lock
+
+\.gradle/2\.14\.1/taskArtifacts/fileHashes\.bin
+
+\.gradle/2\.14\.1/taskArtifacts/fileSnapshots\.bin
+
+\.gradle/2\.14\.1/taskArtifacts/fileSnapshotsToTreeSnapshotsIndex\.bin
+
+\.gradle/2\.14\.1/taskArtifacts/taskArtifacts\.bin
