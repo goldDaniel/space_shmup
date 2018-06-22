@@ -1,4 +1,4 @@
-# SPACE SHMUP - Built With [LibGDX](https://libgdx.badlogicgames.com/)
+# [SPACE SHMUP](https://golddaniel.itch.io/shmup) - Built With [LibGDX](https://libgdx.badlogicgames.com/)
 
 A game I wrote using a codebase I built. The base is a common structure 
 I have used with a few other projects.
