@@ -11,14 +11,14 @@ I have used with a few other projects.
     that I set for myself in regards to my architecture. Next project
     will have a rewrite of this main codebase, and there will be a more
     layered approach.
-  * Originally I had planned to have a full level with different enemies,
+ * Originally I had planned to have a full level with different enemies,
     and upgrades to the player ship. After I while I realized how out of 
     scope that really was and focused on making the one fight.
     
-  * UI is hard, I used a free skin from [here](https://github.com/czyzby/gdx-skins) and made it work
+ * UI is hard, I used a free skin from [here](https://github.com/czyzby/gdx-skins) and made it work
     but it really is not pretty. I would like to try and write my own UI system sometime.
     
-  * Asset managment was easy to handle in this game, there isnt a whole lot. Because of 
+ * Asset managment was easy to handle in this game, there isnt a whole lot. Because of 
     this I felt it was appropriate to load it all at the beginning. What I wasn't expecting
     was the super long load times on web due to downloading resources (libGDX has cross platform deployment)
     and there was 2 back to back loading screens as well! Next time i'll separate it out more.
@@ -31,7 +31,7 @@ I have used with a few other projects.
     then take these self contained spawners and manipulate the inputs
     to make very good effects and patterns. I will use something similar
     for my next particle system.
-  * The animation logic for the player ended up being a very clean
+* The animation logic for the player ended up being a very clean
     looking state machine that worked super smoothly and never had to 
     be fiddled with ever.
   
