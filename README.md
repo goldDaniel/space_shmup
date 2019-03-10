@@ -1,4 +1,4 @@
-# [SPACE SHMUP](https://golddaniel.itch.io/shmup) - Built With [LibGDX](https://libgdx.badlogicgames.com/)
+# [SPACE SHMUP - Play Here!](https://golddaniel.itch.io/shmup) - Built With [LibGDX](https://libgdx.badlogicgames.com/)
   * LOOKS WAY BETTER ON DESKTOP
   * [BLAST DEM BOTS](https://github.com/goldDaniel/BLAST_DEM_BOTS)
   * [UNNAMED PLATFORMER](https://github.com/goldDaniel/platformer_project)
