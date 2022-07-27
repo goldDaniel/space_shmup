@@ -11,6 +11,8 @@ import com.badlogic.gdx.math.Vector2;
 import gold.daniel.entities.Boss;
 import gold.daniel.entities.Bullet;
 import gold.daniel.entities.BulletSpawner;
+import gold.daniel.main.Assets;
+import gold.daniel.main.Particle;
 import gold.daniel.main.World;
 
 /**
@@ -24,30 +26,33 @@ public class Phase3
     
     static BulletSpawner leftContainment = new BulletSpawner(
             0, 0, 1, 360, 
-            -90, 0, 1, 250, 
+            -90, 0, 1, 350,
             Bullet.BulletType.SMALL_ORANGE);
     
     static BulletSpawner rightContainment = new BulletSpawner(
             0, 0, 1, 360,
-            -90, 0, 1, 250, 
+            -90, 0, 1, 350,
             Bullet.BulletType.SMALL_ORANGE);
     
     static BulletSpawner follower = new BulletSpawner(
-            0, 0, 3, 45,
-            0, 0, 35f, 90f, 
+            0, 0, 5, 30f,
+            0, 0, 25f, 145f,
             Bullet.BulletType.SMALL_BLUE);
     
     static BulletSpawner spinSpawner = new BulletSpawner(
             0, 0, 2, 360,
-            0, 270f, 3, 75, 
+            0, 480f, 3, 185,
             Bullet.BulletType.SMALL_PURPLE);
     
     public static void update(Boss boss, World world, float delta)
     {
-        if(boss.getHealth() < 100)
+        if(boss.getHealth() < boss.HEALTH_MAX / 4)
         {
             boss.setPhase(Boss.Phase.PHASE_4);
             boss.inTransition = true;
+            Assets.bossExplosion.play();
+            world.addParticle(new Particle(boss.x + boss.width / 2, boss.y + boss.height / 2,
+                    Particle.ParticleType.EXPLOSION_LARGE));
             return;
         }
         boss.x += MathUtils.cosDeg(cycle) * 105f * delta;

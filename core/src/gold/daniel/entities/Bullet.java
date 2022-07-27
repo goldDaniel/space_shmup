@@ -66,7 +66,20 @@ public class Bullet extends Entity implements Poolable
         
         width = texture.getRegionWidth() / 1.5f;
         height = texture.getRegionHeight() / 1.5f;
-        
+
+        if( type == BulletType.PLAYER_00 ||
+            type == BulletType.PLAYER_01 ||
+            type == BulletType.PLAYER_02 ||
+            type == BulletType.PLAYER_03)
+        {
+            collisionRadius = width / 1.5f;
+        }
+        else
+        {
+            collisionRadius = 4.f;
+        }
+
+
         this.x = x - width / 2;
         this.y = y;    
     }

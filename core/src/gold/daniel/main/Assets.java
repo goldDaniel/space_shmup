@@ -74,7 +74,7 @@ public class Assets
     public static void load()
     {
         manager.load("ui/neon-ui.json", Skin.class);
-        
+
         manager.load("misc/texture.png", Texture.class);
         
         manager.load("enemies/boss/Boss_Merged.png", Texture.class);
@@ -337,7 +337,7 @@ public class Assets
         smallBulletOrange = new TextureRegion(manager.get("enemies/bullets/Small_Shot_Orange.png", Texture.class));
         smallBulletBlue = new TextureRegion(manager.get("enemies/bullets/Small_Shot_Blue.png", Texture.class));
         
-        level01 = Gdx.files.internal("levels/level01.txt").readString();
+        //level01 = Gdx.files.internal("levels/level01.txt").readString();
     }
 
     public static AssetManager getManager()

@@ -7,6 +7,9 @@ import com.badlogic.gdx.math.Vector2;
 import gold.daniel.entities.Boss;
 import gold.daniel.entities.Bullet;
 import gold.daniel.entities.BulletSpawner;
+import gold.daniel.main.Assets;
+import gold.daniel.main.Globals;
+import gold.daniel.main.Particle;
 import gold.daniel.main.World;
 
 /**
@@ -17,8 +20,6 @@ public class Phase1
 {
     
     static float bossCircleAngle = 90f;
-    static boolean rotateClockwise = true;
-    static final float START_ANGLE = -135f;
     
     static BulletSpawner follower = new BulletSpawner(
             0, 0, 1, 360,
@@ -32,10 +33,13 @@ public class Phase1
     
     public static void update(Boss boss, World world, float delta)
     {
-        if(boss.getHealth() < 300)
+        if(boss.getHealth() < boss.HEALTH_MAX / 4 * 3)
         {
             boss.setPhase(Boss.Phase.PHASE_2);
             boss.inTransition = true;
+            Assets.bossExplosion.play();
+            world.addParticle(new Particle(boss.x + boss.width / 2, boss.y + boss.height / 2,
+                    Particle.ParticleType.EXPLOSION_LARGE));
             return;
         }
         

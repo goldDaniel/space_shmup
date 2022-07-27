@@ -46,7 +46,8 @@ public class Boss extends Entity
     private Phase currentPhase; 
     
     Texture tex = Assets.boss;
-    
+
+    public final float HEALTH_MAX;
     public float health;
     
     public boolean inTransition;
@@ -72,9 +73,10 @@ public class Boss extends Entity
         
         invulnerable = false;
         
-        health = 400f;
+        HEALTH_MAX =  health = 800f;
 
         currentPhase = Phase.PHASE_ENTRANCE;
+        collisionRadius = height / 1.5f;
     }
     
     @Override
@@ -105,6 +107,7 @@ public class Boss extends Entity
             invulnerable = false;
         }
 
+        delta *= 2;
         switch(currentPhase)
         {
             case PHASE_ENTRANCE: 
@@ -145,7 +148,7 @@ public class Boss extends Entity
                        bullet.type == Bullet.BulletType.PLAYER_02 ||
                        bullet.type == Bullet.BulletType.PLAYER_03)
                     {
-                        if(bullet.isBoundingBoxColliding(this))
+                        if(bullet.isColliding(this))
                         {
                             bullet.kill(level);
                             health -= bullet.damage;
@@ -156,7 +159,7 @@ public class Boss extends Entity
             }
         }
        
-        if(level.getPlayer().isBoundingBoxColliding(this))
+        if(level.getPlayer().isColliding(this))
         {
             level.getPlayer().kill(level);
         }
@@ -178,7 +181,7 @@ public class Boss extends Entity
         batch.draw(Assets.texture, 
                 4, 
                 Globals.GAME_HEIGHT - 4, 
-                Globals.GAME_WIDTH * health / 400f - 8,
+                Globals.GAME_WIDTH * health / HEALTH_MAX - 8,
                 -20);
         
         

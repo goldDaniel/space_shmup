@@ -4,6 +4,8 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.Array;
@@ -31,7 +33,7 @@ public class Player extends Entity
     
     //speed is pixels per second
     //means this will take /N seconds to move across the screen
-    private float speed = Globals.GAME_WIDTH / 4f;
+    private float speed = Globals.GAME_WIDTH / 2.f;
     
     Animation<Texture> idle;
     Animation<Texture> transition;
@@ -46,7 +48,7 @@ public class Player extends Entity
     public BulletType bulletType;
     
     //can shoot every N frames
-    final int FIRERATE = 14;
+    final int FIRERATE = 4;
     float fireCount;
     
     
@@ -63,17 +65,17 @@ public class Player extends Entity
         bulletType = BulletType.PLAYER_00;
         
         idle = new Animation<Texture>(
-                1f/8f, 
+                1f/16f,
                 Assets.playerIdleFrames,
                 Animation.PlayMode.LOOP_PINGPONG);
         
         transition = new Animation<Texture>(
-                1f/24f, 
+                1f/32f,
                 Assets.playerTransitionFrames, 
                 Animation.PlayMode.NORMAL);
         
         banking = new Animation<Texture>(
-                1f/8f, 
+                1f/16f,
                 Assets.playerLeanFrames, 
                 Animation.PlayMode.LOOP_PINGPONG);
         
@@ -82,6 +84,7 @@ public class Player extends Entity
         
         width = currentTexture.getWidth();
         height = currentTexture.getHeight();
+        collisionRadius = 4;
         
         respawning = true;
     }
@@ -128,11 +131,11 @@ public class Player extends Entity
         
         
         x = MathUtils.clamp(x, -width / 3, Globals.GAME_WIDTH - width * 2f / 3f);
-        y = MathUtils.clamp(y, 0, Globals.GAME_HEIGHT - height);
+        y = MathUtils.clamp(y, -width / 2, Globals.GAME_HEIGHT - height / 2);
     
         if(canFire(delta) && input.isShootPressed())
         {
-            Assets.playerLaser.play(0.1f);
+            Assets.playerLaser.play(0.05f);
             
             level.createBullet(x + width / 2, y + height, bulletType);
             
@@ -148,7 +151,7 @@ public class Player extends Entity
                    bullet.type == BulletType.SMALL_PURPLE ||
                    bullet.type == BulletType.SMALL_ORANGE)
                 {
-                   if(isBoundingBoxColliding(bullet))
+                   if(isColliding(bullet))
                     {
                         kill(level);
                     }
@@ -292,6 +295,13 @@ public class Player extends Entity
     }
 
     @Override
+    public Circle getCollisionCircle()
+    {
+        return new Circle(x + width / 2, y + height * 3.f / 4.f + 4, collisionRadius);
+    }
+
+
+    @Override
     public void draw(SpriteBatch s, float parentAlpha)
     {
         s.draw(currentTexture, 
@@ -330,40 +340,7 @@ public class Player extends Entity
                 idle.getKeyFrame(0).getHeight() / 2);
         }
     }
-    
-    @Override
-    public boolean isBoundingBoxColliding(Rectangle rectP)
-    {
-        Rectangle rect = new Rectangle();
-        
-        rect.x = this.x + 72;
-        rect.y = this.y + 125 - 32;
-        
-        rect.width = 6;
-        rect.height = 14;
-        
-        
-        return rect.overlaps(rectP) || rectP.overlaps(rect);
-        
-    }
-    
-    @Override
-    public boolean isBoundingBoxColliding(Entity entity)
-    {
-        Rectangle rect = new Rectangle();
-        
-        //values are specific coordinates defining the 
-        //boundingbox surrounding the green cockpit in idle texture
-        rect.x = this.x + 72;
-        rect.y = this.y + 125 - 32;
-        
-        rect.width = 6;
-        rect.height = 14;
-        
-        
-        return entity.isBoundingBoxColliding(rect);
-    }
-    
+
     @Override
     public void dispose()
     {
@@ -379,6 +356,7 @@ public class Player extends Entity
             invulnerable = true;
             respawning = true;
             slowMotionTimer = 100;
+            Globals.TIMESCALE = 1f;
             level.addParticle(new Particle(x + width / 2, y + height / 2, 
                     Particle.ParticleType.EXPLOSION_LARGE));
             lives--;

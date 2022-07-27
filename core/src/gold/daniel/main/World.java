@@ -2,6 +2,7 @@
 package gold.daniel.main;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.Pool;
 import gold.daniel.entities.Boss;
@@ -204,7 +205,20 @@ public class World
         }
         particles.removeAll(particlesToAdd, true);
     }
-    
+
+    public void draw(ShapeRenderer sh)
+    {
+        for(Entity entity : entities)
+        {
+            entity.draw(sh);
+        }
+        for(Bullet bullet : bullets)
+        {
+            bullet.draw(sh);
+        }
+    }
+
+
     public void draw(SpriteBatch s)
     {
         if(drawFlash)

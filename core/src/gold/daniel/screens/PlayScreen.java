@@ -2,6 +2,7 @@ package gold.daniel.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
 import com.badlogic.gdx.utils.Array;
 import gold.daniel.entities.Boss;
@@ -161,6 +162,10 @@ public class PlayScreen extends GameScreen
         
         world.draw(batch);
         batch.end();
+
+        sh.begin(ShapeRenderer.ShapeType.Filled);
+        //world.draw(sh);
+        sh.end();
         
         uiStage.draw();
     }

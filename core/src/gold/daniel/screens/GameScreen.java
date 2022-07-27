@@ -8,6 +8,7 @@ package gold.daniel.screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Skin;
 import gold.daniel.main.Assets;
@@ -21,6 +22,7 @@ public abstract class GameScreen implements Screen
 {
     protected GameStateManager engine;
     protected SpriteBatch batch;
+    protected ShapeRenderer sh;
     
     protected Stage uiStage;
     protected Skin uiSkin;
@@ -34,6 +36,8 @@ public abstract class GameScreen implements Screen
         batch = new SpriteBatch();
         batch.setProjectionMatrix(engine.getCamera().combined);
         batch.enableBlending();
+        sh = new ShapeRenderer();
+        sh.setProjectionMatrix(engine.getCamera().combined);
         uiStage = new Stage(engine.getHUDViewport(), engine.getHUDSpriteBatch());
         uiSkin = Assets.uiSkin;
     }
