@@ -16,7 +16,7 @@ import com.badlogic.gdx.math.MathUtils;
  */
 public class Particle
 {
-    public static enum ParticleType
+    public enum ParticleType
     {
         ADDITIONAL_BLUE_01,
         ADDITIONAL_BLUE_02,

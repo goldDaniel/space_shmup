@@ -36,7 +36,7 @@ public class Phase2
 
     static BulletSpawner follower = new BulletSpawner(
             0, 0, 1, 360,
-            0, 0, 12f, 150,
+            0, 0, 24f, 150,
             Bullet.BulletType.SMALL_PURPLE);
     
     public static void update(Boss boss, World world, float delta)

@@ -36,7 +36,7 @@ public class Phase3
     
     static BulletSpawner follower = new BulletSpawner(
             0, 0, 5, 30f,
-            0, 0, 25f, 145f,
+            0, 0, 45f, 145f,
             Bullet.BulletType.SMALL_BLUE);
     
     static BulletSpawner spinSpawner = new BulletSpawner(
@@ -51,8 +51,7 @@ public class Phase3
             boss.setPhase(Boss.Phase.PHASE_4);
             boss.inTransition = true;
             Assets.bossExplosion.play();
-            world.addParticle(new Particle(boss.x + boss.width / 2, boss.y + boss.height / 2,
-                    Particle.ParticleType.EXPLOSION_LARGE));
+            world.addParticle(new Particle(boss.x + boss.width / 2, boss.y + boss.height / 2, Particle.ParticleType.EXPLOSION_LARGE));
             return;
         }
         boss.x += MathUtils.cosDeg(cycle) * 105f * delta;
